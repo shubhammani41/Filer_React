@@ -1,24 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Login from './Widgets/Login/Login';
+import NotFound from './Widgets/NotFound/NotFound';
+import { Button, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+import { useContext, useState } from 'react';
+import { ThemeContext, themeObjDark, themeObjLight } from './theme';
+
 
 function App() {
+  const toggleMode = (val) => {
+    setTheme(val)
+  }
+  const curr_theme = useContext(ThemeContext);
+  const [isDark, setTheme] = useState(curr_theme);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeContext.Provider value={isDark}>
+      <ThemeProvider theme={createTheme(isDark?themeObjDark:themeObjLight)}>
+        <CssBaseline />
+        <BrowserRouter>
+          <Routes>
+            <Route path='' element={<Login />}></Route>
+            <Route path='*' element={<NotFound />}></Route>
+          </Routes>
+        </BrowserRouter>
+        <Button onClick={() => toggleMode(!isDark)}>Toggle Mode</Button>
+      </ThemeProvider>
+    </ThemeContext.Provider>
   );
 }
 

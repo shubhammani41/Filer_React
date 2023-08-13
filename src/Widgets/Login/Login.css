@@ -1,0 +1,21 @@
+.LandingImageContainer{
+    position: fixed;
+}
+
+.LoginContainer{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(/src/assets/landing_background.jpg);
+    background-size: cover;
+}
+
+.landingImage {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    object-fit: cover;
+    display: block;
+}
