@@ -23,7 +23,7 @@ function App() {
             <Route path='*' element={<NotFound />}></Route>
           </Routes>
         </BrowserRouter>
-        <Button onClick={() => toggleMode(!isDark)}>Toggle Mode</Button>
+        <Button onClick={() => toggleMode(!isDark)}>Toggle done</Button>
       </ThemeProvider>
     </ThemeContext.Provider>
   );
