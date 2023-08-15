@@ -10,24 +10,17 @@ const Auth = lazy(() => import('./Modules/Auth/Auth'));
 
 
 function App() {
-  const toggleMode = (val) => {
-    let data = {...app_context_obj};
-    data.darkMode = val;
-    setAppContext(data);
-  }
   const [app_context_obj, setAppContext] = useContext(AppContext);
   return (
     <ThemeProvider theme={createTheme(app_context_obj.darkMode ? themeObjDark : themeObjLight)}>
-
       <CssBaseline  />
-      <Header/>
+      {app_context_obj.userData.isLoggedIn?<Header/>:''}
       <BrowserRouter>
         <Routes>
           <Route path='/*' element={<Auth />}></Route>
           <Route path='*' element={<NotFound />}></Route>
         </Routes>
       </BrowserRouter>
-      <Button onClick={() => toggleMode(!app_context_obj.darkMode)}>Toggle {app_context_obj.darkMode?'dark':'light'}</Button>
     </ThemeProvider>
   );
 }

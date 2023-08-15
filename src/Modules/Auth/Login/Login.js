@@ -12,7 +12,7 @@ function Login() {
     return (
         <div className="LoginContainer">
             <div className="LandingCardContainer">
-                <Card sx={{ minWidth: 275 }}>
+                <Card sx={{ minWidth: 300 }}>
                     <CardHeader sx={{ backgroundColor: 'primary.main', color: 'primary.contrastText' }} title={strObjects.welcome}></CardHeader>
                     <CardContent>
                         <InputLabel htmlFor="username">{strObjects.username}</InputLabel>
