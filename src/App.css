@@ -49,6 +49,10 @@ html {
   margin: 0
 }
 
+.mb15{
+  margin-bottom: 15px !important;
+}
+
 .p0 {
   padding: 0;
 }
@@ -78,7 +82,7 @@ html {
 
 .MuiTextField-root {
   width: 100%;
-  margin: 5px 0px 20px 0px !important;
+  margin: 5px 0px 5px 0px;
 }
 
 .MuiCard-root {
@@ -99,8 +103,9 @@ html {
 }
 
 .MuiCardContent-root {
-  padding: 15px 20px 15px 20px !important;
+  padding: 15px 20px 10px 20px !important;
 }
 .MuiCardActions-root{
   justify-content: center;
+  padding: 10px 20px !important;
 }

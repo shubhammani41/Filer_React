@@ -16,14 +16,14 @@ function Login() {
                     <CardHeader sx={{ backgroundColor: 'primary.main', color: 'primary.contrastText' }} title={strObjects.welcome}></CardHeader>
                     <CardContent>
                         <InputLabel htmlFor="username">{strObjects.username}</InputLabel>
-                        <TextField id="username" variant="outlined" />
+                        <TextField className='mb15' id="username" variant="outlined" />
                         <InputLabel htmlFor="password">{strObjects.passowrd}</InputLabel>
                         <TextField id="password" variant="outlined" />
                     </CardContent>
                     <CardActions>
-                        <div>
+                        <div className='W100'>
                             <div className='V_Center H_Center W100'>
-                                <Button color='primary' variant='contained' size="small">{strObjects.login}</Button>
+                                <Button className='W100' color='primary' variant='contained' size="small">{strObjects.login}</Button>
                             </div>
                             <div className='V_Center H_Center W100'>
                             <Link to="/signup"><Button color='primary' variant='text' size="small">Signup</Button></Link>

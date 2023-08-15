@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NotFound from './Modules/Global/NotFound/NotFound';
 import { Button, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
-import { lazy, useContext, useState } from 'react';
+import { lazy, useContext } from 'react';
 import { AppContext } from './AppContext';
 import { themeObjDark, themeObjLight } from './Constants/ThemeConstants';
 import Header from './Modules/Global/Header/Header';
