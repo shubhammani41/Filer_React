@@ -1,33 +1,32 @@
 import { Button, Card, CardActions, CardContent, CardHeader, InputLabel, TextField } from '@mui/material';
-import './Login.css';
+import './Register.css';
 import { useNavigate } from 'react-router-dom';
 import { strObjects } from '../../../Constants/StringConstants';
-import {  Link } from "react-router-dom";
 
-function Login() {
+function Register() {
     const navigate = useNavigate();
     const errorPage = () => {
         navigate('/login/abc')
     }
     return (
-        <div className="LoginContainer">
+        <div className="RegisterContainer">
             <div className="LandingCardContainer">
                 <Card sx={{ minWidth: 275 }}>
                     <CardHeader sx={{ backgroundColor: 'primary.main', color: 'primary.contrastText' }} title={strObjects.welcome}></CardHeader>
                     <CardContent>
+                        <InputLabel htmlFor="name">{strObjects.name}</InputLabel>
+                        <TextField id="name" variant="outlined" />
+                        <InputLabel htmlFor="email">{strObjects.email}</InputLabel>
+                        <TextField id="email" variant="outlined" />
+
                         <InputLabel htmlFor="username">{strObjects.username}</InputLabel>
                         <TextField id="username" variant="outlined" />
                         <InputLabel htmlFor="password">{strObjects.passowrd}</InputLabel>
                         <TextField id="password" variant="outlined" />
                     </CardContent>
                     <CardActions>
-                        <div>
-                            <div className='V_Center H_Center W100'>
-                                <Button color='primary' variant='contained' size="small">{strObjects.login}</Button>
-                            </div>
-                            <div className='V_Center H_Center W100'>
-                            <Link to="/signup"><Button color='primary' variant='text' size="small">Signup</Button></Link>
-                            </div>
+                        <div className='V_Center H_Center W100'>
+                            <Button color='primary' variant='contained' size="small">{strObjects.login}</Button>
                         </div>
                     </CardActions>
                 </Card>
@@ -38,4 +37,4 @@ function Login() {
     )
 }
 
-export default Login;
+export default Register;

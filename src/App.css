@@ -101,3 +101,6 @@ html {
 .MuiCardContent-root {
   padding: 15px 20px 15px 20px !important;
 }
+.MuiCardActions-root{
+  justify-content: center;
+}
