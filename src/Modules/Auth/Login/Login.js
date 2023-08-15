@@ -2,7 +2,7 @@ import { Button, Card, CardActions, CardContent, CardHeader, InputLabel, TextFie
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
 import { strObjects } from '../../../Constants/StringConstants';
-import {  Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Login() {
     const navigate = useNavigate();
@@ -16,9 +16,9 @@ function Login() {
                     <CardHeader sx={{ backgroundColor: 'primary.main', color: 'primary.contrastText' }} title={strObjects.welcome}></CardHeader>
                     <CardContent>
                         <InputLabel htmlFor="username">{strObjects.username}</InputLabel>
-                        <TextField className='mb15' id="username" variant="outlined" />
+                        <TextField className='mb15' id="username" variant="outlined" placeholder={strObjects.enterusername} />
                         <InputLabel htmlFor="password">{strObjects.passowrd}</InputLabel>
-                        <TextField id="password" variant="outlined" />
+                        <TextField className="mb15" id="password" variant="outlined" placeholder={strObjects.enterpassword} />
                     </CardContent>
                     <CardActions>
                         <div className='W100'>
@@ -26,7 +26,7 @@ function Login() {
                                 <Button className='W100' color='primary' variant='contained' size="small">{strObjects.login}</Button>
                             </div>
                             <div className='V_Center H_Center W100'>
-                            <Link to="/signup"><Button color='primary' variant='text' size="small">Signup</Button></Link>
+                                <Link to="/signup"><Button color='primary' variant='text' size="small">Signup</Button></Link>
                             </div>
                         </div>
                     </CardActions>

@@ -21,15 +21,15 @@ function Register() {
     const pageArr = [
         <div>
             <InputLabel htmlFor="name">{strObjects.name}</InputLabel>
-            <TextField className='mb15' id="name" variant="outlined" />
+            <TextField className='mb15' id="name" variant="outlined" placeholder={strObjects.entershortname} />
             <InputLabel htmlFor="email">{strObjects.email}</InputLabel>
-            <TextField id="email" variant="outlined" />
+            <TextField id="email" variant="outlined" placeholder={strObjects.enteremail} />
         </div>,
         <div>
             <InputLabel htmlFor="username">{strObjects.username}</InputLabel>
-            <TextField className='mb15' id="username" variant="outlined" />
+            <TextField className='mb15' id="username" variant="outlined" placeholder={strObjects.enterusername} />
             <InputLabel htmlFor="password">{strObjects.passowrd}</InputLabel>
-            <TextField id="password" variant="outlined" />
+            <TextField id="password" variant="outlined" placeholder={strObjects.enterpassword} />
         </div>
     ]
     return (
