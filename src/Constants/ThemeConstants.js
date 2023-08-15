@@ -1,12 +1,9 @@
-import { createContext, useState } from "react";
-
 const themeObjLight = {
     palette: {
-        type: 'light',
         mode: 'light',
         primary: {
             main: '#a20026',
-            contrastText: '#ffffff',
+            contrastText: '#ffffff !important',
             light: '#b93554',
             dark: '#6d0018',
         },
@@ -38,10 +35,19 @@ const themeObjLight = {
             contrastText: 'rgba(0,0,0,0.87)',
         }
     },
+    typography: {
+        fontFamily: 'Roboto',
+        allVariants: {
+            color: "rgba(0,0,0,0.87)"
+        },
+    },
+    cardheadercontent: {
+        fontFamily: 'Popins',
+        color:"#ffffff"
+    },
 }
 const themeObjDark = {
     palette: {
-        type: 'dark',
         mode: 'dark',
         primary: {
             main: '#a20026',
@@ -77,6 +83,12 @@ const themeObjDark = {
             contrastText: 'rgba(0,0,0,0.87)',
         }
     },
+    typography: {
+        fontFamily: 'Roboto',
+        allVariants: {
+            color: "#ffffff"
+        },
+    },
 }
-const ThemeContext = createContext(undefined);
-export { themeObjLight, themeObjDark, ThemeContext};
+
+export {themeObjLight, themeObjDark}

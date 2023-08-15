@@ -12,9 +12,13 @@
   --normal_font_size: 15px;
   --medium_font_size: 20px;
   --big_font_size: 25px;
-  --ultra_font_size: 30px;
+  --huge_font_size: 30px;
+  --ultra_font_size: 150px;
   --background_color_light: white;
   --background_color_dark: rgb(32 33 36);
+  --letter_spacing_normal: 0px;
+  --letter_spacing_medium: 1px;
+  --letter_spacing_large: 2px;
   /* --primary_color: #a20026; */
 }
 
@@ -22,43 +26,74 @@
   font-family: var(--filer_font);
   font-weight: var(--light_font);
   font-size: var(--normal_font_size);
+  letter-spacing: var(--letter_spacing_medium) !important;
 }
 
-body,html{
+body,
+html {
   width: 100vw;
   height: 100vh;
   margin: 0px;
   padding: 0px;
 }
 
-.W100{
+.ultraHugeText {
+  font-size: var(--ultra_font_size) !important;
+}
+
+.bolderText{
+  font-weight: var(--bolder_font) !important;
+}
+
+.m0 {
+  margin: 0
+}
+
+.p0 {
+  padding: 0;
+}
+
+.medPara {
+  width: 350px;
+  white-space: normal;
+}
+
+.W100 {
   width: 100%;
 }
 
-.FlexBox{
+.FlexBox {
   display: flex;
 }
 
-.V_Center{
+.V_Center {
+  display: flex;
   align-items: center;
 }
 
-.H_Center{
+.H_Center {
+  display: flex;
   justify-content: center;
 }
 
-.MuiTextField-root{
+.MuiTextField-root {
   width: 100%;
   margin: 5px 0px 20px 0px !important;
 }
 
-.MuiCard-root{
+.MuiCard-root {
   border-radius: 10px !important;
   min-width: 300px !important;
-  box-shadow:  0px 2px 10px 5px rgb(0 0 0 / 21%), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12) !important;
+  box-shadow: 0px 2px 10px 5px rgb(0 0 0 / 21%), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
 }
 
-.MuiButton-root{
+.MuiCardHeader-root {
+  .MuiCardHeader-title {
+    color: #ffffff !important;
+  }
+}
+
+.MuiButton-root {
   padding: 10px !important;
   margin-bottom: 10px !important;
 }
