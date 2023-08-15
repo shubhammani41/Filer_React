@@ -1,31 +1,34 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Login from './Widgets/Login/Login';
-import NotFound from './Widgets/NotFound/NotFound';
+import NotFound from './Modules/Global/NotFound/NotFound';
 import { Button, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
-import { useContext, useState } from 'react';
-import { ThemeContext, themeObjDark, themeObjLight } from './theme';
+import { lazy, useContext } from 'react';
+import { AppContext } from './AppContext';
+import { themeObjDark, themeObjLight } from './Constants/ThemeConstants';
+import Header from './Modules/Global/Header/Header';
+const Auth = lazy(() => import('./Modules/Auth/Auth'));
 
 
 function App() {
   const toggleMode = (val) => {
-    setTheme(val)
+    let data = {...app_context_obj};
+    data.darkMode = val;
+    setAppContext(data);
   }
-  const curr_theme = useContext(ThemeContext);
-  const [isDark, setTheme] = useState(curr_theme);
+  const [app_context_obj, setAppContext] = useContext(AppContext);
   return (
-    <ThemeContext.Provider value={isDark}>
-      <ThemeProvider theme={createTheme(isDark?themeObjDark:themeObjLight)}>
-        <CssBaseline />
-        <BrowserRouter>
-          <Routes>
-            <Route path='' element={<Login />}></Route>
-            <Route path='*' element={<NotFound />}></Route>
-          </Routes>
-        </BrowserRouter>
-        <Button onClick={() => toggleMode(!isDark)}>Toggle done</Button>
-      </ThemeProvider>
-    </ThemeContext.Provider>
+    <ThemeProvider theme={createTheme(app_context_obj.darkMode ? themeObjDark : themeObjLight)}>
+
+      <CssBaseline  />
+      <Header/>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/*' element={<Auth />}></Route>
+          <Route path='*' element={<NotFound />}></Route>
+        </Routes>
+      </BrowserRouter>
+      <Button onClick={() => toggleMode(!app_context_obj.darkMode)}>Toggle {app_context_obj.darkMode?'dark':'light'}</Button>
+    </ThemeProvider>
   );
 }
 

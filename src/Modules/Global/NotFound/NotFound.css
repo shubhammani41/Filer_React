@@ -1,8 +1,4 @@
-.LandingImageContainer{
-    position: fixed;
-}
-
-.LoginContainer{
+.NotFoundContainer{
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -10,12 +6,4 @@
     align-items: center;
     background-image: url(/src/assets/landing_background.jpg);
     background-size: cover;
-}
-
-.landingImage {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    object-fit: cover;
-    display: block;
 }
