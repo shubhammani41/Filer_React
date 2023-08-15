@@ -1,10 +1,10 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Login from './Widgets/Login/Login';
-import NotFound from './Widgets/NotFound/NotFound';
+import NotFound from './Modules/Global/NotFound/NotFound';
 import { Button, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
-import { useContext, useState } from 'react';
+import { lazy, useContext, useState } from 'react';
 import { ThemeContext, themeObjDark, themeObjLight } from './theme';
+const Auth = lazy(()=>import ('./Modules/Auth/Auth'));
 
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
         <CssBaseline />
         <BrowserRouter>
           <Routes>
-            <Route path='' element={<Login />}></Route>
+            <Route path='/*' element={<Auth />}></Route>
             <Route path='*' element={<NotFound />}></Route>
           </Routes>
         </BrowserRouter>
