@@ -13,6 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { strObjects } from "../../../Constants/StringConstants";
+import { DarkModeToggler } from "../DarkModeToggler/DarkModeToggler";
 
 const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -39,8 +40,7 @@ function Header() {
     return (
         <AppBar
             sx={{ backgroundColor: "primary.main", color: "primary.contrastText" }}
-            position="static"
-        >
+            position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
@@ -51,26 +51,23 @@ function Header() {
                         href="/"
                         sx={{
                             mr: 2,
-                            display: { xs: "none", md: "flex" },
+                            display: { xs: "flex", md: "flex" },
                             fontFamily: "monospace",
                             fontWeight: 700,
                             letterSpacing: ".3rem",
                             color: "inherit",
                             textDecoration: "none",
-                        }}
-                    >
+                        }}>
                         {strObjects.filer}
                     </Typography>
-
-                    <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+                    {/* <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
                         <IconButton
                             size="large"
                             aria-label="account of current user"
                             aria-controls="menu-appbar"
                             aria-haspopup="true"
                             onClick={handleOpenNavMenu}
-                            color="inherit"
-                        >
+                            color="inherit">
                             <MenuIcon />
                         </IconButton>
                         <Menu
@@ -89,8 +86,7 @@ function Header() {
                             onClose={handleCloseNavMenu}
                             sx={{
                                 display: { xs: "block", md: "none" },
-                            }}
-                        >
+                            }}>
                             {pages.map((page) => (
                                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                                     <Typography textAlign="center">{page}</Typography>
@@ -113,8 +109,7 @@ function Header() {
                             letterSpacing: ".3rem",
                             color: "inherit",
                             textDecoration: "none",
-                        }}
-                    >
+                        }}>
                         LOGO
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
@@ -122,14 +117,14 @@ function Header() {
                             <Button
                                 key={page}
                                 onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: "white", display: "block" }}
-                            >
+                                sx={{ my: 2, color: "white", display: "block" }}>
                                 {page}
                             </Button>
                         ))}
-                    </Box>
+                    </Box> */}
 
                     <Box sx={{ flexGrow: 0 }}>
+                    <DarkModeToggler></DarkModeToggler>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -149,8 +144,7 @@ function Header() {
                                 horizontal: "right",
                             }}
                             open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
-                        >
+                            onClose={handleCloseUserMenu}>
                             {settings.map((setting) => (
                                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
                                     <Typography textAlign="center">{setting}</Typography>

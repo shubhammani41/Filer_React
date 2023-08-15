@@ -8,6 +8,12 @@
     background-size: cover;
 }
 
+.LandingCardContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .landingImage {
     width: 100vw;
     height: 100vh;

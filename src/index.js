@@ -8,7 +8,10 @@ import { AppContext } from './AppContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 function Global() {
   const [app_context, setAppContext] = useState({
-    userData:{},
+    userData:{
+      isLoggedIn:false,
+      data:{}
+    },
     darkMode:false
   });
   return (

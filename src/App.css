@@ -35,6 +35,7 @@ html {
   height: 100vh;
   margin: 0px;
   padding: 0px;
+  overflow: hidden;
 }
 
 .ultraHugeText {
@@ -53,8 +54,23 @@ html {
   margin-bottom: 15px !important;
 }
 
+.mb10{
+  margin-bottom: 10px !important;
+}
+
+.ml10{
+  margin-left: 10px !important;
+}
+
+.mr10{
+  margin-right: 10px !important;
+}
+
 .p0 {
   padding: 0;
+}
+.btnWithStyle.p15{
+  padding: 15px !important;
 }
 
 .medPara {
@@ -105,7 +121,16 @@ html {
 .MuiCardContent-root {
   padding: 15px 20px 10px 20px !important;
 }
+
 .MuiCardActions-root{
   justify-content: center;
   padding: 10px 20px !important;
+}
+
+.MuiToolbar-root{
+  justify-content: space-around;
+}
+
+.MuiContainer-root, .MuiPaper-root {
+  background-image: none !important;
 }
