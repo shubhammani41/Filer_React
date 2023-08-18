@@ -3,12 +3,16 @@ import './Login.css';
 import { useNavigate } from 'react-router-dom';
 import { strObjects } from '../../../Constants/StringConstants';
 import { Link } from "react-router-dom";
+import { useState } from 'react';
+import { FormControl } from '../../Global/ReactiveForms/ReactiveForms';
 
 function Login() {
     const navigate = useNavigate();
     const errorPage = () => {
         navigate('/login/abc')
     }
+
+    let userName = new FormControl('', [(val) => { return val ? true : false }])
     return (
         <div className="LoginContainer">
             <div className="LandingCardContainer">
@@ -16,7 +20,8 @@ function Login() {
                     <CardHeader sx={{ backgroundColor: 'primary.main', color: 'primary.contrastText' }} title={strObjects.welcome}></CardHeader>
                     <CardContent>
                         <InputLabel htmlFor="username">{strObjects.username}</InputLabel>
-                        <TextField size='small' className='mb15 mt5' id="username" variant="outlined" placeholder={strObjects.place_holder_username} />
+                        <TextField size='small' className='mb15 mt5' id="username" variant="outlined" placeholder={strObjects.place_holder_username}
+                            value={userName.value} onFocus={()=>{userName.patchTouched(true)}} error={userName.invalid && userName.touched} onChange={(e) => { userName.patchValue(e.target.value) }} />
                         <InputLabel htmlFor="password">{strObjects.passowrd}</InputLabel>
                         <TextField size='small' className="mt5" id="password" variant="outlined" placeholder={strObjects.place_holder_password} />
                     </CardContent>
