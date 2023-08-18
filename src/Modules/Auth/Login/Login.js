@@ -16,9 +16,9 @@ function Login() {
                     <CardHeader sx={{ backgroundColor: 'primary.main', color: 'primary.contrastText' }} title={strObjects.welcome}></CardHeader>
                     <CardContent>
                         <InputLabel htmlFor="username">{strObjects.username}</InputLabel>
-                        <TextField className='mb15' id="username" variant="outlined" placeholder={strObjects.enterusername} />
+                        <TextField size='small' className='mb15 mt5' id="username" variant="outlined" placeholder={strObjects.place_holder_username} />
                         <InputLabel htmlFor="password">{strObjects.passowrd}</InputLabel>
-                        <TextField className="mb15" id="password" variant="outlined" placeholder={strObjects.enterpassword} />
+                        <TextField size='small' className="mt5" id="password" variant="outlined" placeholder={strObjects.place_holder_password} />
                     </CardContent>
                     <CardActions>
                         <div className='W100'>

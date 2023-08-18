@@ -1,0 +1,15 @@
+.MuiFab-sizeSmall.rectangle {
+    width: auto;
+    height: auto;
+    min-width: 41px;
+    min-height: 41px;
+    border-radius: 4px;
+}
+
+.MuiFab-sizeMedium.rectangle {
+    border-radius: 4px;
+}
+
+.MuiFab-sizeLarge.rectangle {
+    border-radius: 4px;
+}
