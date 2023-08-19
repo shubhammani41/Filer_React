@@ -2,10 +2,10 @@ import { Fab } from '@mui/material'
 import './NextRoundBtn.css'
 import { NavigateNextRounded } from '@mui/icons-material'
 
-function NextRoundBtn() {
+function NextRoundBtn(props) {
     return (
         <div>
-            <Fab className='mb10 mr10' color="primary" aria-label="add">
+            <Fab size={props?.size?props.size:'large'} color={props?.color?props.color:'primary'} className={(props?.shape?props.shape:'')} aria-label="add">
                 <NavigateNextRounded />
             </Fab>
         </div>

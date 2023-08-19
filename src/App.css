@@ -54,6 +54,10 @@ html {
   margin-bottom: 15px !important;
 }
 
+.mt5{
+  margin-top: 5px !important;
+}
+
 .mb10{
   margin-bottom: 10px !important;
 }
@@ -133,4 +137,12 @@ html {
 
 .MuiContainer-root, .MuiPaper-root {
   background-image: none !important;
+}
+
+.MuiInputBase-inputSizeSmall{
+  padding: 12px 12px !important;
+}
+
+.afterRequired::after{
+  content: '*';
 }

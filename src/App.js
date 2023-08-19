@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import NotFound from './Modules/Global/NotFound/NotFound';
-import { Button, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import { lazy, useContext } from 'react';
 import { AppContext } from './AppContext';
 import { themeObjDark, themeObjLight } from './Constants/ThemeConstants';
@@ -10,7 +10,11 @@ const Auth = lazy(() => import('./Modules/Auth/Auth'));
 
 
 function App() {
-  const [app_context_obj, setAppContext] = useContext(AppContext);
+  window.addEventListener('click',()=>{
+    var ele = document.getElementsByClassName('textFieldReactive');
+    console.log(ele)
+  })
+  const [app_context_obj] = useContext(AppContext);
   return (
     <ThemeProvider theme={createTheme(app_context_obj.darkMode ? themeObjDark : themeObjLight)}>
       <CssBaseline  />
