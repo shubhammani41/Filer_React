@@ -142,3 +142,7 @@ html {
 .MuiInputBase-inputSizeSmall{
   padding: 12px 12px !important;
 }
+
+.afterRequired::after{
+  content: '*';
+}

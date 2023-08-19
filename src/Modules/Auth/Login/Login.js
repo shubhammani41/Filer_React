@@ -1,27 +1,27 @@
 import { Button, Card, CardActions, CardContent, CardHeader, InputLabel, TextField } from '@mui/material';
 import './Login.css';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { strObjects } from '../../../Constants/StringConstants';
 import { Link } from "react-router-dom";
-import { useState } from 'react';
-import { FormControl } from '../../Global/ReactiveForms/ReactiveForms';
+import { FormControl } from '../../Global/ReactiveForms/FormControl';
+import { TextFieldReactive } from '../../Global/TextFieldReactive/TextFieldReactive';
+import { Validators } from '../../Global/ReactiveForms/Validators';
 
 function Login() {
-    const navigate = useNavigate();
-    const errorPage = () => {
-        navigate('/login/abc')
-    }
+    // const navigate = useNavigate();
+    // const errorPage = () => {
+    //     navigate('/login/abc')
+    // }
 
-    let userName = new FormControl('', [(val) => { return val ? true : false }])
+    let userName = new FormControl('', [Validators.Required])
     return (
         <div className="LoginContainer">
             <div className="LandingCardContainer">
                 <Card sx={{ minWidth: 300 }}>
                     <CardHeader sx={{ backgroundColor: 'primary.main', color: 'primary.contrastText' }} title={strObjects.welcome}></CardHeader>
                     <CardContent>
-                        <InputLabel htmlFor="username">{strObjects.username}</InputLabel>
-                        <TextField size='small' className='mb15 mt5' id="username" variant="outlined" placeholder={strObjects.place_holder_username}
-                            value={userName.value} onFocus={()=>{userName.patchTouched(true)}} error={userName.invalid && userName.touched} onChange={(e) => { userName.patchValue(e.target.value) }} />
+                        <TextFieldReactive label={strObjects.username} size='small' className='mb15 mt5' id="username" variant="outlined" placeholder={strObjects.place_holder_username}
+                            formControl={userName} error={userName.invalid && userName.touched}/>
                         <InputLabel htmlFor="password">{strObjects.passowrd}</InputLabel>
                         <TextField size='small' className="mt5" id="password" variant="outlined" placeholder={strObjects.place_holder_password} />
                     </CardContent>
