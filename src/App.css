@@ -19,6 +19,7 @@
   --letter_spacing_normal: 0px;
   --letter_spacing_medium: 1px;
   --letter_spacing_large: 2px;
+  --error-color: #ff0004;
   /* --primary_color: #a20026; */
 }
 
@@ -120,6 +121,14 @@ html {
 .MuiButton-root {
   padding: 10px !important;
   margin-bottom: 10px !important;
+  margin-right: 0px !important;
+}
+
+.MuiButtonGroup-root {
+  .MuiButton-root {
+    padding: 10px !important;
+    margin-bottom: 0px !important;
+  }
 }
 
 .MuiCardContent-root {
@@ -145,4 +154,10 @@ html {
 
 .afterRequired::after{
   content: '*';
+}
+
+.Mui-error{
+  .MuiOutlinedInput-notchedOutline{
+    border-width: 2px !important;
+  }
 }

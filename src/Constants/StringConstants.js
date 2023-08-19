@@ -14,7 +14,8 @@ const strObjects = {
     place_holder_password:"e.g. Cool_App@23XXXXXXXX",
     place_holder_username:"e.g. Shubham_1994",
     place_holder_email:"e.g. rajat23@filer.com",
-    entershortname:"Enter short name.."
+    entershortname:"Enter short name..",
+    signup: "Signup"
 }
 
 export { strObjects }

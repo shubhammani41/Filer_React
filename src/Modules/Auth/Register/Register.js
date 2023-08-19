@@ -1,13 +1,12 @@
 import { Button, Card, CardActions, CardContent, CardHeader, InputLabel, TextField } from '@mui/material';
 import './Register.css';
-import { useNavigate } from 'react-router-dom';
 import { strObjects } from '../../../Constants/StringConstants';
-import { NextRoundBtn } from '../../Global/NextRoundBtn/NextRoundBtn';
 import { PreviousRoundBtn } from '../../Global/PreviousRoundBtn/PreviousRoundBtn';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { NavigateNextRounded } from '@mui/icons-material';
 
 function Register() {
-    const navigate = useNavigate();
     const [pageVal, setPageVal] = useState(0);
     const nextPage = () => {
         setPageVal(pageVal + 1);
@@ -36,26 +35,29 @@ function Register() {
         <div className="RegisterContainer">
             <div className="LandingCardContainer">
                 <Card sx={{ minWidth: 275 }}>
-                    <CardHeader sx={{ backgroundColor: 'primary.main', color: 'primary.contrastText' }} title={strObjects.welcome}></CardHeader>
+                    <CardHeader sx={{ backgroundColor: 'primary.main', color: 'primary.contrastText' }} title={strObjects.signup}></CardHeader>
                     <CardContent>
                         {pageArr[pageVal]}
                     </CardContent>
                     <CardActions>
-                        <div className='V_Center H_Center W100'>
-                            {(pageVal < pageArr.length - 1) ? <div onClick={() => { nextPage() }}>
-                                <div className='mb10'>
-                                    <NextRoundBtn size="small" shape="rectangle"></NextRoundBtn>
-                                </div>
-                            </div> : ''}
-                            {(pageVal > 0) ? <div onClick={() => { previousPage() }}>
-                                <div className='mb10 mr10'>
-                                    <PreviousRoundBtn size="small" shape="rectangle"></PreviousRoundBtn>
-                                </div>
-                            </div> : ''}
-                            {(pageVal == pageArr.length - 1) ? <Button
-                                onClick={() => { registerUser() }} color='primary' variant='contained' size="small">
-                                Register
-                            </Button> : ''}
+                        <div className='W100'>
+                            <div className='V_Center H_Center W100'>
+                                {(pageVal < pageArr.length - 1) ? (<Button onClick={() => { nextPage() }} className='W100' color='primary' variant='contained' size="small">
+                                    <NavigateNextRounded />
+                                </Button>) : ''}
+                                {(pageVal > 0) ? <div onClick={() => { previousPage() }}>
+                                    <div className='mb10 mr10'>
+                                        <PreviousRoundBtn size="small" shape="rectangle"></PreviousRoundBtn>
+                                    </div>
+                                </div> : ''}
+                                {(pageVal === pageArr.length - 1) ? <Button
+                                    onClick={() => { registerUser() }} className='mb10 mr10 W100' color='primary' variant='contained' size="small">
+                                    {strObjects.signup}
+                                </Button> : ''}
+                            </div>
+                            <div className='V_Center H_Center W100'>
+                                <Link to="/login"><Button color='primary' variant='text' size="small">{strObjects.login}</Button></Link>
+                            </div>
                         </div>
                     </CardActions>
                 </Card>
