@@ -27,7 +27,9 @@ function TextFieldReactive({ onChange, OnFocus, formControl, label, ...props }) 
     return (
         <div className={'textFieldReactive' + (props?.id ? ' ' + props.id : '')}>
             <InputLabel className={(formControl?.validators?.length > 0 && formControl.validators.indexOf(Validators.Required) > -1) ? 'afterRequired' : ''} htmlFor={props?.id ? props.id : ''}>{label ? label : ''}</InputLabel>
-            <TextField value={formControl?.value?formControl.value:''} {...props}
+            <TextField value={formControl?.value?formControl.value:''} 
+            error={formControl.invalid && formControl.touched}
+            {...props}
                 onFocus={() => {
                     updateTouched();
                     if (defaultOnFocus) {
@@ -41,8 +43,7 @@ function TextFieldReactive({ onChange, OnFocus, formControl, label, ...props }) 
                         defaultOnChange();
                     }
                 }
-                }
-                error={props?.error ? props.error : false} />
+                } />
         </div>
     )
 }

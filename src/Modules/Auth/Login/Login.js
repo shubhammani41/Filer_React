@@ -8,8 +8,12 @@ import { TextFieldReactive } from '../../Global/TextFieldReactive/TextFieldReact
 import { Validators } from '../../Global/ReactiveForms/Validators';
 
 function Login() {
-    let userName = new FormControl('', [Validators.Required]);
+    let userName = new FormControl('m', []);
     let password = new FormControl('', [Validators.Required]);
+    const onClick = () => {
+        userName.patchValue('');
+        userName.patchValidators([Validators.Required])
+    }
     return (
         <div className="LoginContainer">
             <div className="LandingCardContainer">
@@ -17,9 +21,9 @@ function Login() {
                     <CardHeader sx={{ backgroundColor: 'primary.main', color: 'primary.contrastText' }} title={strObjects.welcome}></CardHeader>
                     <CardContent>
                         <TextFieldReactive label={strObjects.username} size='small' className='mb15 mt5' id="username" variant="outlined" placeholder={strObjects.place_holder_username}
-                            formControl={userName} error={userName.invalid && userName.touched} />
+                            formControl={userName} />
                         <TextFieldReactive label={strObjects.passowrd} size='small' className='mb15 mt5' id="username" variant="outlined" placeholder={strObjects.place_holder_password}
-                            formControl={password} error={password.invalid && password.touched} />
+                            formControl={password} />
                     </CardContent>
                     <CardActions>
                         <div className='W100'>
@@ -31,6 +35,9 @@ function Login() {
                             </div>
                         </div>
                     </CardActions>
+                    <Button onClick={onClick}>
+                        Patch
+                    </Button>
                 </Card>
             </div>
         </div>
