@@ -9,20 +9,14 @@ import { Validators } from '../../Global/ReactiveForms/Validators';
 import { FormGroup } from '../../Global/ReactiveForms/FormGroup';
 
 function Login() {
-    // const navigate = useNavigate();
-    // const errorPage = () => {
-    //     navigate('/login/abc')
-    // }
-
-    let userName = new FormControl('', [Validators.Required])
-    let password = new FormControl('', [Validators.Required])
-    let formGroup = new FormGroup({
-        userName: ['', [Validators.Required]]
+    let userName = new FormControl('', [Validators.Required]);
+    let password = new FormControl('', []);
+    let group = new FormGroup({
+        name:['',[Validators.Required]],
     })
     const patchGroup = () => {
-        formGroup.patchGroup({
-            userName :['m',[Validators.Required,Validators.Email]]
-        })
+        password.patchValidators([Validators.Required]);
+        group.patchGroup({name:['m']})
     }
     return (
         <div className="LoginContainer">
