@@ -28,10 +28,10 @@ function Login() {
                     <CardActions>
                         <div className='W100'>
                             <div className='V_Center H_Center W100'>
-                                <Button className='W100' color='primary' variant='contained' size="small">{strObjects.login}</Button>
+                                <Button className='W100 btn-submit' color='primary' variant='contained' size="small">{strObjects.login}</Button>
                             </div>
                             <div className='V_Center H_Center W100'>
-                                <Link to="/signup"><Button color='primary' variant='text' size="small">Signup</Button></Link>
+                                <Link to="/signup"><Button color='primary' variant='text' size="small">{strObjects.signup}</Button></Link>
                             </div>
                         </div>
                     </CardActions>

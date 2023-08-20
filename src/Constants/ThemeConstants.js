@@ -61,9 +61,10 @@ const themeObjDark = {
             dark: '#009604',
             contrastText: 'rgba(0,0,0,0.87)',
         },
-        text: {
-            primary: 'rgba(0,0,0,0.87)',
-        },
+        // text: {
+        //     // primary: 'rgba(0,0,0,0.87)',
+        //     primary: '#ffffff',
+        // },
         error: {
             main: '#ff0004',
             light: '#ff4144',

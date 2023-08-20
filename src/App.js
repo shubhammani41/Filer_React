@@ -10,10 +10,6 @@ const Auth = lazy(() => import('./Modules/Auth/Auth'));
 
 
 function App() {
-  window.addEventListener('click',()=>{
-    var ele = document.getElementsByClassName('textFieldReactive');
-    console.log(ele)
-  })
   const [app_context_obj] = useContext(AppContext);
   return (
     <ThemeProvider theme={createTheme(app_context_obj.darkMode ? themeObjDark : themeObjLight)}>
