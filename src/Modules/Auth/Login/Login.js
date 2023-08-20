@@ -21,9 +21,9 @@ function Login() {
                     <CardHeader sx={{ backgroundColor: 'primary.main', color: 'primary.contrastText' }} title={strObjects.welcome}></CardHeader>
                     <CardContent>
                         <TextFieldReactive label={strObjects.username} size='small' className='mb15 mt5' id="username" variant="outlined" placeholder={strObjects.place_holder_username}
-                            formControl={userName} />
+                            formControl={userName} error={userName.invalid && userName.touched} />
                         <TextFieldReactive label={strObjects.passowrd} size='small' className='mb15 mt5' id="username" variant="outlined" placeholder={strObjects.place_holder_password}
-                            formControl={password} />
+                            formControl={password} error={password.invalid && password.touched}/>
                     </CardContent>
                     <CardActions>
                         <div className='W100'>

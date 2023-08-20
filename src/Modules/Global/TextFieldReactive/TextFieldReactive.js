@@ -28,7 +28,7 @@ function TextFieldReactive({ onChange, OnFocus, formControl, label, ...props }) 
         <div className={'textFieldReactive' + (props?.id ? ' ' + props.id : '')}>
             <InputLabel className={(formControl?.validators?.length > 0 && formControl.validators.indexOf(Validators.Required) > -1) ? 'afterRequired' : ''} htmlFor={props?.id ? props.id : ''}>{label ? label : ''}</InputLabel>
             <TextField value={formControl?.value?formControl.value:''} 
-            error={formControl.invalid && formControl.touched}
+            error={props?.error?props.error:false}
             {...props}
                 onFocus={() => {
                     updateTouched();
