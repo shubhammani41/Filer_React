@@ -42,7 +42,7 @@ function Register() {
                     <CardActions>
                         <div className='W100'>
                             <div className='V_Center H_Center W100'>
-                                {(pageVal < pageArr.length - 1) ? (<Button onClick={() => { nextPage() }} className='W100' color='primary' variant='contained' size="small">
+                                {(pageVal < pageArr.length - 1) ? (<Button onClick={() => { nextPage() }} className='W100 btn-submit' color='primary' variant='contained' size="small">
                                     <NavigateNextRounded />
                                 </Button>) : ''}
                                 {(pageVal > 0) ? <div onClick={() => { previousPage() }}>
@@ -51,7 +51,7 @@ function Register() {
                                     </div>
                                 </div> : ''}
                                 {(pageVal === pageArr.length - 1) ? <Button
-                                    onClick={() => { registerUser() }} className='mb10 mr10 W100' color='primary' variant='contained' size="small">
+                                    onClick={() => { registerUser() }} className='mb10 mr10 W100 btn-submit' color='primary' variant='contained' size="small">
                                     {strObjects.signup}
                                 </Button> : ''}
                             </div>

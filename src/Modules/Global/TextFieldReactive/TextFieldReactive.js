@@ -6,15 +6,17 @@ function TextFieldReactive({ onChange, OnFocus, formControl, label, ...props }) 
     const defaultOnChange = onChange ? onChange : () => null
     const defaultOnFocus = OnFocus ? OnFocus : () => null
     const updateTouched = () => { formControl?.patchTouched(true) };
-    let btns_arr = document.getElementsByTagName('button');
-
+    
+    
     useEffect(() => {
+        let btns_arr = document.getElementsByClassName('btn-submit');
         for (let i = 0; i < btns_arr.length; i++) {
             btns_arr.item(0).addEventListener('click', updateTouched)
         }
     }, []);
 
     useEffect(() => () => {
+        let btns_arr = document.getElementsByClassName('btn-submit');
         for (let i = 0; i < btns_arr.length; i++) {
             btns_arr.item(0).removeEventListener('click', updateTouched);
         }
