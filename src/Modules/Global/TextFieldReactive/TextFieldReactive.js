@@ -13,6 +13,7 @@ function TextFieldReactive({ onChange, OnFocus, formControl, label, ...props }) 
         for (let i = 0; i < btns_arr.length; i++) {
             btns_arr.item(0).addEventListener('click', updateTouched)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => () => {
@@ -20,6 +21,7 @@ function TextFieldReactive({ onChange, OnFocus, formControl, label, ...props }) 
         for (let i = 0; i < btns_arr.length; i++) {
             btns_arr.item(0).removeEventListener('click', updateTouched);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

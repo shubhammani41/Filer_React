@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent, CardHeader, InputLabel, TextField } from '@mui/material';
+import { Button, Card, CardActions, CardContent, CardHeader } from '@mui/material';
 import './Login.css';
 // import { useNavigate } from 'react-router-dom';
 import { strObjects } from '../../../Constants/StringConstants';
@@ -32,8 +32,6 @@ function Login() {
                         </div>
                     </CardActions>
                 </Card>
-
-                {/* <Button onClick={() => errorPage()}>Error</Button> */}
             </div>
         </div>
     )
