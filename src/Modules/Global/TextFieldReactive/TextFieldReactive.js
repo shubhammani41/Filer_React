@@ -6,8 +6,8 @@ function TextFieldReactive({ onChange, OnFocus, formControl, label, ...props }) 
     const defaultOnChange = onChange ? onChange : () => null
     const defaultOnFocus = OnFocus ? OnFocus : () => null
     const updateTouched = () => { formControl?.patchTouched(true) };
-    
-    
+
+
     useEffect(() => {
         let btns_arr = document.getElementsByClassName('btn-submit');
         for (let i = 0; i < btns_arr.length; i++) {
@@ -27,9 +27,9 @@ function TextFieldReactive({ onChange, OnFocus, formControl, label, ...props }) 
     return (
         <div className={'textFieldReactive' + (props?.id ? ' ' + props.id : '')}>
             <InputLabel className={(formControl?.validators?.length > 0 && formControl.validators.indexOf(Validators.Required) > -1) ? 'afterRequired' : ''} htmlFor={props?.id ? props.id : ''}>{label ? label : ''}</InputLabel>
-            <TextField value={formControl?.value?formControl.value:''} 
-            error={props?.error?props.error:false}
-            {...props}
+            <TextField value={formControl?.value ? formControl.value : ''}
+                error={props?.error ? props.error : false}
+                {...props}
                 onFocus={() => {
                     updateTouched();
                     if (defaultOnFocus) {
