@@ -1,7 +1,7 @@
 const strObjects = {
     email: "Email",
     login: "Login",
-    passowrd: "Password",
+    password: "Password",
     welcome: "Welcome",
     please_login: "Please login",
     username: "Username",

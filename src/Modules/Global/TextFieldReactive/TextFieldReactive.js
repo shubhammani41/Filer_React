@@ -1,8 +1,9 @@
-import { InputLabel, TextField } from "@mui/material"
+import { InputLabel, TextField, Typography } from "@mui/material"
 import { Validators } from "../ReactiveForms/Validators"
 import { useEffect } from "react"
+import './TextFieldReactive.css'
 
-function TextFieldReactive({ onChange, OnFocus, formControl, label, ...props }) {
+function TextFieldReactive({ onChange, OnFocus, formControl, label, mbottom, errortextcond, errortext,mtop, ...props }) {
     const defaultOnChange = onChange ? onChange : () => null
     const defaultOnFocus = OnFocus ? OnFocus : () => null
     const updateTouched = () => { formControl?.patchTouched(true) };
@@ -26,7 +27,7 @@ function TextFieldReactive({ onChange, OnFocus, formControl, label, ...props }) 
 
     return (
         <div className={'textFieldReactive' + (props?.id ? ' ' + props.id : '')}>
-            <InputLabel className={(formControl?.validators?.length > 0 && formControl.validators.indexOf(Validators.Required) > -1) ? 'afterRequired' : ''} htmlFor={props?.id ? props.id : ''}>{label ? label : ''}</InputLabel>
+            <InputLabel className={((formControl?.validators?.length > 0 && formControl.validators.indexOf(Validators.Required) > -1) ? 'afterRequired ' : ' ') + (mtop?mtop:'')} htmlFor={props?.id ? props.id : ''}>{label ? label : ''}</InputLabel>
             <TextField value={formControl?.value ? formControl.value : ''}
                 error={props?.error ? props.error : false}
                 {...props}
@@ -44,6 +45,8 @@ function TextFieldReactive({ onChange, OnFocus, formControl, label, ...props }) 
                     }
                 }
                 } />
+            {((errortextcond?errortextcond:false) && errortext) ? <Typography className={"errorText" + (mbottom ? (' ' + mbottom) : '')}>{errortext ? errortext : ''}</Typography> :
+             <div className={mbottom?mbottom:''}></div>}
         </div>
     )
 }

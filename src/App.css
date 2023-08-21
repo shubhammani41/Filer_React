@@ -152,10 +152,6 @@ html {
   padding: 12px 12px !important;
 }
 
-.afterRequired::after{
-  content: '*';
-}
-
 .Mui-error{
   .MuiOutlinedInput-notchedOutline{
     border-width: 2px !important;

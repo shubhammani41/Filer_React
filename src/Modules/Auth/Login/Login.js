@@ -20,10 +20,10 @@ function Login() {
                 <Card sx={{ minWidth: 300 }}>
                     <CardHeader sx={{ backgroundColor: 'primary.main', color: 'primary.contrastText' }} title={strObjects.welcome}></CardHeader>
                     <CardContent>
-                        <TextFieldReactive label={strObjects.username} size='small' className='mb15 mt5' id="username" variant="outlined" placeholder={strObjects.place_holder_username}
-                            formControl={userName} error={userName.invalid && userName.touched} />
-                        <TextFieldReactive label={strObjects.passowrd} size='small' className='mb15 mt5' id="username" variant="outlined" placeholder={strObjects.place_holder_password}
-                            formControl={password} error={password.invalid && password.touched}/>
+                        <TextFieldReactive label={strObjects.username} size='small' className='mt5' id="username" variant="outlined" placeholder={strObjects.place_holder_username}
+                            formControl={userName} error={userName.invalid && userName.touched} errortextcond={userName.invalid && userName.touched} errortext='Enter a valid username' mbottom='mb15' mtop='mt5' />
+                        <TextFieldReactive label={strObjects.password} size='small' className='mt5' id="password" variant="outlined" placeholder={strObjects.place_holder_password}
+                            formControl={password} error={password.invalid && password.touched} errortextcond={password.invalid && password.touched} errortext='Enter a valid password' mbottom='mb15' mtop='mt5'/>
                     </CardContent>
                     <CardActions>
                         <div className='W100'>

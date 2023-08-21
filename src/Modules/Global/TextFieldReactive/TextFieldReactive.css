@@ -1,0 +1,9 @@
+.MuiTypography-root.errorText{
+    font-size: 12px;
+    color: var(--error-color);
+}
+
+.afterRequired::after{
+    content: '*';
+    color: var(--error-color);
+  }
