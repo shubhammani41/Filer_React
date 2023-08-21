@@ -1,10 +1,17 @@
 function FormGroup(formGroupObj) {
+    //Controls has all the formControls as key value pairs.
     this.controls = formGroupObj;
+
+    //Value has simple key value pairs of all the control values.
     this.value = controlsToValue(this.controls);
     this.invalid = isInvalid(this.controls);
     this.valid = !this.invalid;
+
+    //patchValue can update value as well as validators of all or some controls.
+    //Always send a array with value at first index and validator arrays at second index.
+    //If no Validator array is sent then it will leave existing validators as is.
+    //If empty Validators array is sent it will remove existing validators.
     this.patchValue = (valueObj) => { patchValue(valueObj, this) }
-    console.log(this);
 }
 
 const controlsToValue = (controls) => {
