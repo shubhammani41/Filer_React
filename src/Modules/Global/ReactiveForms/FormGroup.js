@@ -1,6 +1,10 @@
+import { FormControl } from "./FormControl";
+
+//Takes a Key Value pair Object with keys containing an array with value on first index
+//and Validators array at second index
 function FormGroup(formGroupObj) {
     //Controls has all the formControls as key value pairs.
-    this.controls = formGroupObj;
+    this.controls = formGroupObjToControls(formGroupObj);
 
     //Value has simple key value pairs of all the control values.
     this.value = controlsToValue(this.controls);
@@ -14,11 +18,20 @@ function FormGroup(formGroupObj) {
     this.patchValue = (valueObj) => { patchValue(valueObj, this) }
 }
 
+const formGroupObjToControls = (formGroupObj) => {
+    const keys_arr = Object.keys(formGroupObj);
+    const controlObj = {};
+    keys_arr.forEach(key => {
+        controlObj[key] = new FormControl(formGroupObj[key][0], formGroupObj[key][1] ? formGroupObj[key][1] : [])
+    })
+    return controlObj;
+}
+
 const controlsToValue = (controls) => {
     const keys_arr = Object.keys(controls);
     const valueObj = {};
     keys_arr.forEach(key => {
-        valueObj[key]=controls[key].value
+        valueObj[key] = controls[key].value
     }
     )
     return valueObj;
@@ -40,7 +53,7 @@ const patchValue = (valueObj, formGroup) => {
     const keys_arr = Object.keys(valueObj);
     const fromGroupValueObj = {};
     keys_arr.forEach(key => {
-        if (formGroup.controls[key] && (valueObj[key][0]||valueObj[key][0]==='')) {
+        if (formGroup.controls[key] && (valueObj[key][0] || valueObj[key][0] === '')) {
             fromGroupValueObj[key] = valueObj[key][0];
             formGroup.controls[key].patchValue(valueObj[key][0]);
         }

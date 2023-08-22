@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function FormControl(value, validators) {
+function FormControl(value, validators=[]) {
     //patchValue can only patch values of the control. do not send validators as a parameter.
     [this.value, this.patchValue] = useState(value);
 

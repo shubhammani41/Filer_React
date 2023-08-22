@@ -43,7 +43,7 @@ const themeObjLight = {
     },
     cardheadercontent: {
         fontFamily: 'Popins',
-        color:"#ffffff"
+        color: "#ffffff"
     },
 }
 const themeObjDark = {
@@ -92,4 +92,4 @@ const themeObjDark = {
     },
 }
 
-export {themeObjLight, themeObjDark}
+export { themeObjLight, themeObjDark }
