@@ -52,26 +52,26 @@ function Register() {
                 placeholder={strObjects.place_holder_last_name}
                 formControl={group.controls.lastName} mbottom='mb15' mtop='mt5' />
 
-            <TextFieldReactive label={strObjects.email} size='small' className='mt5' id="first_name" variant="outlined"
+            <TextFieldReactive label={strObjects.email} size='small' className='mt5' id="email" variant="outlined"
                 placeholder={strObjects.place_holder_email} formControl={group.controls.email}
                 error={group.controls.email.invalid && group.controls.email.touched}
                 errortextcond={group.controls.email.invalid && group.controls.email.touched}
                 errortext={strObjects.enter_a_valid_email} mbottom='mb15' mtop='mt5' />
         </div>,
         <div>
-            <TextFieldReactive label={strObjects.username} size='small' className='mt5' id="first_name" variant="outlined"
+            <TextFieldReactive label={strObjects.username} size='small' className='mt5' id="user_name" variant="outlined"
                 placeholder={strObjects.place_holder_username} formControl={group.controls.userName}
                 error={group.controls.userName.invalid && group.controls.userName.touched}
                 errortextcond={group.controls.userName.invalid && group.controls.userName.touched}
                 errortext={strObjects.enter_a_valid_username} mbottom='mb15' mtop='mt5' />
 
-            <TextFieldReactive label={strObjects.password} size='small' className='mt5' id="first_name" variant="outlined"
+            <TextFieldReactive label={strObjects.password} size='small' className='mt5' id="password" variant="outlined"
                 placeholder={strObjects.place_holder_password} formControl={group.controls.password}
                 error={group.controls.password.invalid && group.controls.password.touched}
                 errortextcond={group.controls.password.invalid && group.controls.password.touched}
                 errortext={strObjects.enter_a_valid_password} mbottom='mb15' mtop='mt5' />
 
-            <TextFieldReactive label={strObjects.confirm_password} size='small' className='mt5' id="first_name" variant="outlined"
+            <TextFieldReactive label={strObjects.confirm_password} size='small' className='mt5' id="confirm_password" variant="outlined"
                 placeholder={strObjects.place_holder_password} formControl={group.controls.confirmPassword}
                 error={(group.controls.confirmPassword.invalid  || group.value.password !== group.value.confirmPassword) && group.controls.confirmPassword.touched}
                 errortextcond={group.controls.confirmPassword.invalid && group.controls.confirmPassword.touched}
