@@ -1,13 +1,14 @@
-import { Alert, Button, Card, CardActions, CardContent, CardHeader, Snackbar, Typography } from '@mui/material';
+import { Alert, Button, Card, CardActions, CardContent, CardHeader, InputLabel, Snackbar, Typography } from '@mui/material';
 import './Register.css';
 import { strObjects } from '../../../Constants/StringConstants';
 import { PreviousRoundBtn } from '../../Global/PreviousRoundBtn/PreviousRoundBtn';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { NavigateNextRounded } from '@mui/icons-material';
 import { Validators } from '../../Global/ReactiveForms/Validators';
-import { TextFieldReactive } from '../../Global/TextFieldReactive/TextFieldReactive';
+import { TextFieldReactive } from '../../Global/TextFieldReactive/TextFieldReactive/TextFieldReactive';
 import { FormGroup } from '../../Global/ReactiveForms/FormGroup';
+import { ErrorText } from '../../Global/TextFieldReactive/ErrorText/ErrorText';
 
 function Register() {
     const [pageVal, setPageVal] = useState(0);
@@ -32,52 +33,66 @@ function Register() {
             setOpenSnackbar2(true);
         }
     }
+
+    const passwordMatch = (a, b) => {
+        return function () { return a === b ? true : false }
+    }
     let group = new FormGroup({
         firstName: ['', [Validators.Required]],
         lastName: ['', []],
         email: ['', [Validators.Required, Validators.Email]],
         userName: ['', [Validators.Required, Validators.Pattern(strObjects.username_regex)]],
-        password: ['', [Validators.Required, Validators.Pattern(strObjects.password_regex)]],
-        confirmPassword: ['', [Validators.Required, Validators.Pattern(strObjects.password_regex)]]
+        password: ['', [Validators.Required]],
+        confirmPassword: ['', []]
     })
+
+    useEffect(() => {
+        group.patchValue({
+            confirmPassword: ['', [Validators.customValidatorFn(passwordMatch(group.value.password, group.value.confirmPassword))]]
+        })
+    }, [])
     const pageArr = [
         <div>
-            <TextFieldReactive label={strObjects.first_name} size='small' className='mt5' id="first_name" variant="outlined"
+            <InputLabel className='mt15 required' htmlFor="first_name">{strObjects.first_name}</InputLabel>
+            <TextFieldReactive size='small' id="first_name" variant="outlined"
                 placeholder={strObjects.place_holder_first_name} formControl={group.controls.firstName}
-                error={group.controls.firstName.invalid && group.controls.firstName.touched}
-                errortextcond={group.controls.firstName.invalid && group.controls.firstName.touched}
-                errortext={strObjects.enter_a_first_name} mbottom='mb15' mtop='mt5' />
+                error={group.controls.firstName.invalid && group.controls.firstName.touched} />
+            <ErrorText errorcond={group.controls.firstName.invalid && group.controls.firstName.touched}
+                errortext={strObjects.enter_a_first_name} className="mb15"></ErrorText>
 
-            <TextFieldReactive label={strObjects.last_name} size='small' className='mt5' id="last_name" variant="outlined"
+            <InputLabel className='mt15 required' htmlFor="last_name">{strObjects.last_name}</InputLabel>
+            <TextFieldReactive size='small' id="last_name" variant="outlined"
                 placeholder={strObjects.place_holder_last_name}
-                formControl={group.controls.lastName} mbottom='mb15' mtop='mt5' />
+                formControl={group.controls.lastName} />
 
-            <TextFieldReactive label={strObjects.email} size='small' className='mt5' id="email" variant="outlined"
+            <InputLabel className='mt15 required' htmlFor="email">{strObjects.email}</InputLabel>
+            <TextFieldReactive size='small' id="email" variant="outlined"
                 placeholder={strObjects.place_holder_email} formControl={group.controls.email}
-                error={group.controls.email.invalid && group.controls.email.touched}
-                errortextcond={group.controls.email.invalid && group.controls.email.touched}
-                errortext={strObjects.enter_a_valid_email} mbottom='mb15' mtop='mt5' />
+                error={group.controls.email.invalid && group.controls.email.touched} />
+            <ErrorText errorcond={group.controls.email.invalid && group.controls.email.touched}
+                errortext={strObjects.enter_a_valid_email}></ErrorText>
         </div>,
         <div>
-            <TextFieldReactive label={strObjects.username} size='small' className='mt5' id="user_name" variant="outlined"
+            <InputLabel className='mt15 required' htmlFor="user_name">{strObjects.username}</InputLabel>
+            <TextFieldReactive size='small' id="user_name" variant="outlined"
                 placeholder={strObjects.place_holder_username} formControl={group.controls.userName}
-                error={group.controls.userName.invalid && group.controls.userName.touched}
-                errortextcond={group.controls.userName.invalid && group.controls.userName.touched}
-                errortext={strObjects.enter_a_valid_username} mbottom='mb15' mtop='mt5' />
+                error={group.controls.userName.invalid && group.controls.userName.touched} />
+            <ErrorText errorcond={group.controls.userName.invalid && group.controls.userName.touched}
+                errortext={strObjects.enter_a_valid_username} className="mb15"></ErrorText>
 
-            <TextFieldReactive label={strObjects.password} size='small' className='mt5' id="password" variant="outlined"
+            <InputLabel className='mt15 required' htmlFor="password">{strObjects.password}</InputLabel>
+            <TextFieldReactive size='small' id="password" variant="outlined"
                 placeholder={strObjects.place_holder_password} formControl={group.controls.password}
-                error={group.controls.password.invalid && group.controls.password.touched}
-                errortextcond={group.controls.password.invalid && group.controls.password.touched}
-                errortext={strObjects.enter_a_valid_password} mbottom='mb15' mtop='mt5' />
+                error={group.controls.password.invalid && group.controls.password.touched} />
+            <ErrorText errorcond={group.controls.password.invalid && group.controls.password.touched}
+                errortext={strObjects.enter_a_valid_password} className="mb15"></ErrorText>
 
-            <TextFieldReactive label={strObjects.confirm_password} size='small' className='mt5' id="confirm_password" variant="outlined"
+            <InputLabel className='mt15 required' htmlFor="confirm_password">{strObjects.confirm_password}</InputLabel>
+            <TextFieldReactive size='small' id="confirm_password" variant="outlined"
                 placeholder={strObjects.place_holder_password} formControl={group.controls.confirmPassword}
-                error={(group.controls.confirmPassword.invalid  || group.value.password !== group.value.confirmPassword) && group.controls.confirmPassword.touched}
-                errortextcond={group.controls.confirmPassword.invalid && group.controls.confirmPassword.touched}
-                errortext={strObjects.enter_a_valid_password} mbottom={(group.value.password === group.value.confirmPassword) ? 'mb15' : ''} mtop='mt5' />
-
-            {(group.value.password !== group.value.confirmPassword) ? <Typography className="errorText mb15">{strObjects.password_confrim_password_dont_match}</Typography> : null}
+                error={group.controls.confirmPassword.invalid && group.controls.confirmPassword.touched} />
+            <ErrorText errorcond={group.controls.confirmPassword.invalid && group.controls.confirmPassword.touched}
+                errortext={strObjects.password_confrim_password_dont_match}></ErrorText>
         </div>
     ]
     return (
@@ -100,7 +115,7 @@ function Register() {
                                         <PreviousRoundBtn size="small" shape="rectangle"></PreviousRoundBtn>
                                     </div>
                                 </div> : null}
-                                {(pageVal === pageArr.length - 1) ? <Button disabled={group.invalid || group.value.password !== group.value.confirmPassword}
+                                {(pageVal === pageArr.length - 1) ? <Button disabled={group.invalid}
                                     onClick={registerUser} className='mb10 mr10 W100 btn-submit' color='primary' variant='contained' size="small">
                                     {strObjects.signup}
                                 </Button> : null}

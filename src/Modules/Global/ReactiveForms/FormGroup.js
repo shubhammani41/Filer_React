@@ -46,6 +46,7 @@ const isInvalid = (controls) => {
             return false;
         }
     })
+    console.log(isInvalid)
     return isInvalid;
 }
 

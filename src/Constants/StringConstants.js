@@ -28,7 +28,7 @@ const strObjects = {
     last_name: "Last name",
     place_holder_last_name:"e.g. Tripathi",
     confirm_password: "Confirm password",
-    password_confrim_password_dont_match: "Password and Confrim passwords don't match",
+    password_confrim_password_dont_match: "Password and Confrim password don't match",
     please_provide_all_the_inputs_properly: "Please provide all the inputs properly",
     success_message: "Success",
     error_message: "Uh Oh! Something went wrong"

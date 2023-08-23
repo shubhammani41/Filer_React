@@ -43,7 +43,7 @@ html {
   font-size: var(--ultra_font_size) !important;
 }
 
-.bolderText{
+.bolderText {
   font-weight: var(--bolder_font) !important;
 }
 
@@ -51,30 +51,35 @@ html {
   margin: 0
 }
 
-.mb15{
+.mb15 {
   margin-bottom: 15px !important;
 }
 
-.mt5{
+.mt5 {
   margin-top: 5px !important;
 }
 
-.mb10{
+.mt15 {
+  margin-top: 15px !important;
+}
+
+.mb10 {
   margin-bottom: 10px !important;
 }
 
-.ml10{
+.ml10 {
   margin-left: 10px !important;
 }
 
-.mr10{
+.mr10 {
   margin-right: 10px !important;
 }
 
 .p0 {
   padding: 0;
 }
-.btnWithStyle.p15{
+
+.btnWithStyle.p15 {
   padding: 15px !important;
 }
 
@@ -101,7 +106,7 @@ html {
   justify-content: center;
 }
 
-.fW300{
+.fW300 {
   width: 300px !important;
 }
 
@@ -139,25 +144,31 @@ html {
   padding: 15px 20px 10px 20px !important;
 }
 
-.MuiCardActions-root{
+.MuiCardActions-root {
   justify-content: center;
   padding: 10px 20px !important;
 }
 
-.MuiToolbar-root{
+.MuiToolbar-root {
   justify-content: space-around;
 }
 
-.MuiContainer-root, .MuiPaper-root {
+.MuiContainer-root,
+.MuiPaper-root {
   background-image: none !important;
 }
 
-.MuiInputBase-inputSizeSmall{
+.MuiInputBase-inputSizeSmall {
   padding: 12px 12px !important;
 }
 
-.Mui-error{
-  .MuiOutlinedInput-notchedOutline{
+.Mui-error {
+  .MuiOutlinedInput-notchedOutline {
     border-width: 2px !important;
   }
+}
+
+label.required::after {
+  content: '*';
+  color: var(--error-color);
 }

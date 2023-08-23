@@ -59,6 +59,14 @@ const Validators = {
             else return false;
         }
     },
+
+    //allows you to provide a custom function that will return true or false for validation
+    customValidatorFn: (fn) => {
+        return function (value) {
+            console.log(fn)
+            return fn ? true : false
+        }
+    }
 }
 
 export { Validators }

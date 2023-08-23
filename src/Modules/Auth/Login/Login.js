@@ -1,11 +1,12 @@
-import { Alert, Button, Card, CardActions, CardContent, CardHeader, Snackbar } from '@mui/material';
+import { Alert, Button, Card, CardActions, CardContent, CardHeader, InputLabel, Snackbar } from '@mui/material';
 import './Login.css';
 import { strObjects } from '../../../Constants/StringConstants';
 import { Link } from "react-router-dom";
-import { TextFieldReactive } from '../../Global/TextFieldReactive/TextFieldReactive';
 import { Validators } from '../../Global/ReactiveForms/Validators';
 import { FormGroup } from '../../Global/ReactiveForms/FormGroup';
 import { useState } from 'react';
+import { TextFieldReactive } from '../../Global/TextFieldReactive/TextFieldReactive/TextFieldReactive';
+import { ErrorText } from '../../Global/TextFieldReactive/ErrorText/ErrorText';
 
 function Login() {
     let group = new FormGroup({
@@ -28,16 +29,19 @@ function Login() {
                 <Card sx={{ minWidth: 300 }}>
                     <CardHeader sx={{ backgroundColor: 'primary.main', color: 'primary.contrastText' }} title={strObjects.welcome}></CardHeader>
                     <CardContent>
-                        <TextFieldReactive label={strObjects.username} size='small' className='mt5' id="username" variant="outlined"
+                        <InputLabel className='mt15 required' htmlFor="user_name">{strObjects.username}</InputLabel>
+                        <TextFieldReactive size='small' id="user_name" variant="outlined"
                             placeholder={strObjects.place_holder_username} formControl={group.controls.userName}
-                            error={group.controls.userName.invalid && group.controls.userName.touched}
-                            errortextcond={group.controls.userName.invalid && group.controls.userName.touched}
-                            errortext={strObjects.enter_a_valid_username} mbottom='mb15' mtop='mt5' />
-                        <TextFieldReactive label={strObjects.password} size='small' className='mt5' id="password" variant="outlined"
+                            error={group.controls.userName.invalid && group.controls.userName.touched} />
+                        <ErrorText errorcond={group.controls.userName.invalid && group.controls.userName.touched}
+                            errortext={strObjects.enter_a_valid_username} className="mb15"></ErrorText>
+
+                        <InputLabel className='mt15 required' htmlFor="password">{strObjects.password}</InputLabel>
+                        <TextFieldReactive size='small' id="password" variant="outlined"
                             placeholder={strObjects.place_holder_password} formControl={group.controls.password}
-                            error={group.controls.password.invalid && group.controls.password.touched}
-                            errortextcond={group.controls.password.invalid && group.controls.password.touched}
-                            errortext={strObjects.enter_a_valid_password} mbottom='mb15' mtop='mt5' />
+                            error={group.controls.password.invalid && group.controls.userName.password} />
+                        <ErrorText errorcond={group.controls.password.invalid && group.controls.userName.password}
+                            errortext={strObjects.enter_a_valid_password}></ErrorText>
                     </CardContent>
                     <CardActions>
                         <div className='W100'>
