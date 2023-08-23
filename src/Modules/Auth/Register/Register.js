@@ -1,14 +1,14 @@
-import { Alert, Button, Card, CardActions, CardContent, CardHeader, InputLabel, Snackbar, Typography } from '@mui/material';
+import { Alert, Button, Card, CardActions, CardContent, CardHeader, InputLabel, Snackbar } from '@mui/material';
 import './Register.css';
 import { strObjects } from '../../../Constants/StringConstants';
 import { PreviousRoundBtn } from '../../Global/PreviousRoundBtn/PreviousRoundBtn';
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { NavigateNextRounded } from '@mui/icons-material';
 import { Validators } from '../../Global/ReactiveForms/Validators';
 import { TextFieldReactive } from '../../Global/TextFieldReactive/TextFieldReactive/TextFieldReactive';
 import { FormGroup } from '../../Global/ReactiveForms/FormGroup';
 import { ErrorText } from '../../Global/TextFieldReactive/ErrorText/ErrorText';
+import { useState } from 'react';
 
 function Register() {
     const [pageVal, setPageVal] = useState(0);
@@ -34,23 +34,15 @@ function Register() {
         }
     }
 
-    const passwordMatch = (a, b) => {
-        return function () { return a === b ? true : false }
-    }
     let group = new FormGroup({
         firstName: ['', [Validators.Required]],
         lastName: ['', []],
         email: ['', [Validators.Required, Validators.Email]],
         userName: ['', [Validators.Required, Validators.Pattern(strObjects.username_regex)]],
-        password: ['', [Validators.Required]],
-        confirmPassword: ['', []]
+        password: ['', [Validators.Required, Validators.Pattern(strObjects.password_regex)]],
+        confirmPassword: ['', [Validators.Required, Validators.Pattern(strObjects.password_regex)]]
     })
 
-    useEffect(() => {
-        group.patchValue({
-            confirmPassword: ['', [Validators.customValidatorFn(passwordMatch(group.value.password, group.value.confirmPassword))]]
-        })
-    }, [])
     const pageArr = [
         <div>
             <InputLabel className='mt15 required' htmlFor="first_name">{strObjects.first_name}</InputLabel>
@@ -90,8 +82,8 @@ function Register() {
             <InputLabel className='mt15 required' htmlFor="confirm_password">{strObjects.confirm_password}</InputLabel>
             <TextFieldReactive size='small' id="confirm_password" variant="outlined"
                 placeholder={strObjects.place_holder_password} formControl={group.controls.confirmPassword}
-                error={group.controls.confirmPassword.invalid && group.controls.confirmPassword.touched} />
-            <ErrorText errorcond={group.controls.confirmPassword.invalid && group.controls.confirmPassword.touched}
+                error={(group.controls.confirmPassword.invalid || group.value.password!==group.value.confirmPassword) && group.controls.confirmPassword.touched} />
+            <ErrorText errorcond={group.value.password!==group.value.confirmPassword && group.controls.confirmPassword.touched}
                 errortext={strObjects.password_confrim_password_dont_match}></ErrorText>
         </div>
     ]
@@ -115,7 +107,7 @@ function Register() {
                                         <PreviousRoundBtn size="small" shape="rectangle"></PreviousRoundBtn>
                                     </div>
                                 </div> : null}
-                                {(pageVal === pageArr.length - 1) ? <Button disabled={group.invalid}
+                                {(pageVal === pageArr.length - 1) ? <Button disabled={group.invalid || group.value.password!==group.value.confirmPassword}
                                     onClick={registerUser} className='mb10 mr10 W100 btn-submit' color='primary' variant='contained' size="small">
                                     {strObjects.signup}
                                 </Button> : null}

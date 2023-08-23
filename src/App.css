@@ -20,6 +20,9 @@
   --letter_spacing_medium: 1px;
   --letter_spacing_large: 2px;
   --error-color: #ff0004;
+  --success-color: #00b500;
+  --warn-color: rgb(245, 124, 0);
+  --info-color: rgb(2, 136, 209);
   /* --primary_color: #a20026; */
 }
 
@@ -171,4 +174,53 @@ html {
 label.required::after {
   content: '*';
   color: var(--error-color);
+}
+
+.MuiSnackbar-root {
+  min-width: 300px;
+}
+
+.MuiAlert-standardSuccess {
+  background: var(--success-color) !important;
+  color: white !important;
+
+  .MuiAlert-icon {
+    color: white !important;
+  }
+}
+
+.MuiAlert-standardError {
+  background: var(--success-color) !important;
+  color: white !important;
+
+  .MuiAlert-icon {
+    color: white !important;
+  }
+}
+
+.MuiAlert-standardError {
+  background: var(--error-color) !important;
+  color: white !important;
+
+  .MuiAlert-icon {
+    color: white !important;
+  }
+}
+
+.MuiAlert-standardWarning {
+  background: var(--warn-color) !important;
+  color: white !important;
+
+  .MuiAlert-icon {
+    color: white !important;
+  }
+}
+
+.MuiAlert-standardInfo {
+  background: var(--info-color) !important;
+  color: white !important;
+
+  .MuiAlert-icon {
+    color: white !important;
+  }
 }

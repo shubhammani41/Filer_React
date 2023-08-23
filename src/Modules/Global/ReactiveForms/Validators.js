@@ -60,11 +60,13 @@ const Validators = {
         }
     },
 
-    //allows you to provide a custom function that will return true or false for validation
-    customValidatorFn: (fn) => {
-        return function (value) {
-            console.log(fn)
-            return fn ? true : false
+    //allows you to provide a custom function that will return true or false for validation.
+    //Takes a key value pair with fn key having the refrence of a custom function and args having an array of static arguments. 
+    //Note if the arguments of the customFn change then the validation will not update. It is meant only for static arguments
+    customValidatorFn: (customFn) => {
+        const {fn, args} = customFn;
+        return function(value){
+            return fn(...args);
         }
     }
 }
