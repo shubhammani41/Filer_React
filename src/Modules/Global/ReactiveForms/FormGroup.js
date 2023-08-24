@@ -52,17 +52,17 @@ const isInvalid = (controls) => {
 
 const patchValue = (valueObj, formGroup) => {
     const keys_arr = Object.keys(valueObj);
-    const fromGroupValueObj = {};
+    // const fromGroupValueObj = {};
     keys_arr.forEach(key => {
         if (formGroup.controls[key] && (valueObj[key][0] || valueObj[key][0] === '')) {
-            fromGroupValueObj[key] = valueObj[key][0];
+            formGroup[key] = valueObj[key][0];
             formGroup.controls[key].patchValue(valueObj[key][0]);
         }
         if (formGroup.controls[key] && valueObj[key][1]) {
             formGroup.controls[key].patchValidators(valueObj[key][1]);
         }
     })
-    formGroup.value = fromGroupValueObj;
+    // formGroup.value = fromGroupValueObj;
     formGroup.invalid = isInvalid(formGroup.controls);
     formGroup.valid = !formGroup.invalid;
 }
