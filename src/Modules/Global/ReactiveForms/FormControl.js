@@ -11,21 +11,21 @@ function FormControl(value, validators = []) {
     //patchTouched only makes touched property to true.
     [this.touched, this.patchTouched] = useState(false);
 
-    //error property contains names of validator functions that have returned false
-    [this.error, this.invalid] = isInvalid(this.value, this.validators);
+    //errors property contains names of validator functions that have returned false
+    [this.errors, this.invalid] = isInvalid(this.value, this.validators);
     this.valid = !this.invalid;
 }
 
 const isInvalid = (value, validators) => {
     let isInvalid = false;
-    let error = {};
+    let errors = {};
     validators.forEach((validatorFn) => {
         if (validatorFn(value) === false) {
-            error[validatorFn.name] = true;
+            errors[validatorFn.name] = true;
             isInvalid = true;
         }
     });
-    return [error, isInvalid];
+    return [errors, isInvalid];
 }
 
 export { FormControl }
