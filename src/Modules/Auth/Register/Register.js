@@ -73,14 +73,14 @@ function Register() {
                 errortext={strObjects.enter_a_valid_username} className="mb15"></ErrorText>
 
             <InputLabel className='mt15 required' htmlFor="password">{strObjects.password}</InputLabel>
-            <TextFieldReactive size='small' id="password" variant="outlined"
+            <TextFieldReactive autoComplete='new-password' type='password' size='small' id="password" variant="outlined"
                 placeholder={strObjects.place_holder_password} formControl={group.controls.password}
                 error={group.controls.password.invalid && group.controls.password.touched} />
             <ErrorText errorcond={group.controls.password.invalid && group.controls.password.touched}
                 errortext={strObjects.enter_a_valid_password} className="mb15"></ErrorText>
 
             <InputLabel className='mt15 required' htmlFor="confirm_password">{strObjects.confirm_password}</InputLabel>
-            <TextFieldReactive size='small' id="confirm_password" variant="outlined"
+            <TextFieldReactive autoComplete='new-password' type='password' size='small' id="confirm_password" variant="outlined"
                 placeholder={strObjects.place_holder_password} formControl={group.controls.confirmPassword}
                 error={(group.controls.confirmPassword.invalid || group.value.password!==group.value.confirmPassword) && group.controls.confirmPassword.touched} />
             <ErrorText errorcond={group.value.password!==group.value.confirmPassword && group.controls.confirmPassword.touched}

@@ -37,7 +37,7 @@ function Login() {
                             errortext={strObjects.enter_a_valid_username} className="mb15"></ErrorText>
 
                         <InputLabel className='mt15 required' htmlFor="password">{strObjects.password}</InputLabel>
-                        <TextFieldReactive size='small' id="password" variant="outlined"
+                        <TextFieldReactive autoComplete='new-password' type='password' size='small' id="password" variant="outlined"
                             placeholder={strObjects.place_holder_password} formControl={group.controls.password}
                             error={group.controls.password.invalid && group.controls.userName.password} />
                         <ErrorText errorcond={group.controls.password.invalid && group.controls.userName.password}
