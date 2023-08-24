@@ -8,7 +8,7 @@ const Validators = {
         return emailRegex.test(value);
     },
 
-    //can take a regex literal or a regex string that is escape properly
+    //can take a regex literal or a regex string that is escaped properly
     Pattern: (pattern) => {
         let regex;
 
@@ -23,9 +23,10 @@ const Validators = {
         } else {
             throw new Error('Invalid pattern type');
         }
-        return function (value) {
+        const Pattern = (value) => {
             return regex.test(value);
-        };
+        }
+        return Pattern;
     },
     Number: (value) => {
         return (typeof (value) === 'number') ? true : false;
@@ -34,40 +35,45 @@ const Validators = {
         return (Number.isInteger(value)) ? true : false;
     },
     MinLength: (length) => {
-        return function (value) {
+        const MinLength = (value) => {
             return (value?.length >= length) ? true : false;
         }
+        return MinLength;
     },
     MaxLength: (length) => {
-        return function (value) {
+        const MaxLength = (value) => {
             return (value?.length <= length) ? true : false;
         }
+        return MaxLength;
     },
     Min: (val) => {
-        return function (value) {
+        const Min = (value) => {
             if (isNaN(parseFloat(value))) {
                 return (value >= parseFloat(val)) ? true : false;
             }
             else return false;
         }
+        return Min;
     },
     Max: (val) => {
-        return function (value) {
+        const Max = (value) => {
             if (isNaN(parseFloat(value))) {
                 return (value <= parseFloat(val)) ? true : false;
             }
             else return false;
         }
+        return Max;
     },
 
     //allows you to provide a custom function that will return true or false for validation.
     //Takes a key value pair with fn key having the refrence of a custom function and args having an array of static arguments. 
     //Note if the arguments of the customFn change then the validation will not update. It is meant only for static arguments
     customValidatorFn: (customFn) => {
-        const {fn, args} = customFn;
-        return function(value){
+        const { fn, args } = customFn;
+        const customValidatorFn = (value) => {
             return fn(...args);
         }
+        return customValidatorFn;
     }
 }
 

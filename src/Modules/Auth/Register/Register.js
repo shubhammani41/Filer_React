@@ -52,7 +52,7 @@ function Register() {
             <ErrorText errorcond={group.controls.firstName.invalid && group.controls.firstName.touched}
                 errortext={strObjects.enter_a_first_name} className="mb15"></ErrorText>
 
-            <InputLabel className='mt15 required' htmlFor="last_name">{strObjects.last_name}</InputLabel>
+            <InputLabel className='mt15' htmlFor="last_name">{strObjects.last_name}</InputLabel>
             <TextFieldReactive size='small' id="last_name" variant="outlined"
                 placeholder={strObjects.place_holder_last_name}
                 formControl={group.controls.lastName} />

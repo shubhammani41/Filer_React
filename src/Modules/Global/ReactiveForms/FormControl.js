@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function FormControl(value, validators=[]) {
+function FormControl(value, validators = []) {
     //patchValue can only patch values of the control. do not send validators as a parameter.
     [this.value, this.patchValue] = useState(value);
 
@@ -11,27 +11,21 @@ function FormControl(value, validators=[]) {
     //patchTouched only makes touched property to true.
     [this.touched, this.patchTouched] = useState(false);
 
-    const isInvalid = (value, validators) => {
-        let isInvalid = false;
-        validators.forEach((validatorFn) => {
-            if (validatorFn(value) === false) {
-                isInvalid = true;
-            }
-        });
-        return isInvalid;
-    }
-    const isValid = (value, validators) => {
-        let isValid = true;
-        validators.forEach((validatorFn) => {
-            if (validatorFn(value) === false) {
-                isValid = false;
-            }
-        });
-        return isValid;
-    }
+    //error property contains names of validator functions that have returned false
+    [this.error, this.invalid] = isInvalid(this.value, this.validators);
+    this.valid = !this.invalid;
+}
 
-    this.invalid = isInvalid(this.value, this.validators);
-    this.valid = isValid(this.value, this.validators);
+const isInvalid = (value, validators) => {
+    let isInvalid = false;
+    let error = {};
+    validators.forEach((validatorFn) => {
+        if (validatorFn(value) === false) {
+            error[validatorFn.name] = true;
+            isInvalid = true;
+        }
+    });
+    return [error, isInvalid];
 }
 
 export { FormControl }
