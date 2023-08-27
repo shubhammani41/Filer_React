@@ -55,7 +55,7 @@ const patchValue = (valueObj, formGroup) => {
     // const fromGroupValueObj = {};
     keys_arr.forEach(key => {
         if (formGroup.controls[key] && (valueObj[key][0] || valueObj[key][0] === '')) {
-            formGroup[key] = valueObj[key][0];
+            formGroup.value[key] = valueObj[key][0];
             formGroup.controls[key].patchValue(valueObj[key][0]);
         }
         if (formGroup.controls[key] && valueObj[key][1]) {
