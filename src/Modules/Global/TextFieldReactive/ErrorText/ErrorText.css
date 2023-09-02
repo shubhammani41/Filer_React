@@ -1,0 +1,4 @@
+.errorText .MuiTypography-root{
+    font-size: 12px;
+    color: var(--error-color);
+}

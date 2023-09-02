@@ -10,6 +10,7 @@ function Auth() {
             <Route path="/" element={<Navigate to="/login" />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/signup" element={<Register />}></Route>
+            {/* <Route path="/signup" element={<AuthGuard component ={<Register/>}  data={{isLoggedin:true}} />}></Route> */}
             <Route path='*' element={<NotFound />}></Route>
         </Routes>
     )

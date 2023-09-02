@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent, CardHeader, InputLabel, Typography } from '@mui/material';
+import { Button, Card, CardActions, CardContent, CardHeader, Typography } from '@mui/material';
 import './NotFound.css'
 import { strObjects } from '../../../Constants/StringConstants';
 function NotFound() {
