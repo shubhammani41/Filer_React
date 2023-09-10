@@ -21,7 +21,7 @@ const strObjects = {
     // enter_a_valid_password: "Enter a valid password (8-20 characters, atleast one alphabet, atleast one number and atleast one characters from '@$!%*#?&' ",
     enter_a_valid_password: "Enter a valid password",
     enter_a_valid_email: "Enter a valid email",
-    password_regex: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,20}$/,
+    password_regex: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&_])[A-Za-z\d@$!%*#?&_]{8,20}$/,
     first_name: "First name",
     enter_a_first_name:"Enter a first name",
     place_holder_first_name:"e.g. Rajat",

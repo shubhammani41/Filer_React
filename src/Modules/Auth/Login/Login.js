@@ -7,6 +7,7 @@ import { FormGroup } from '../../Global/ReactiveForms/FormGroup';
 import { useState } from 'react';
 import { TextFieldReactive } from '../../Global/TextFieldReactive/TextFieldReactive/TextFieldReactive';
 import { ErrorText } from '../../Global/TextFieldReactive/ErrorText/ErrorText';
+import { FormControlArray } from '../../Global/ReactiveForms/FormControlArray';
 
 function Login() {
     let group = new FormGroup({
@@ -23,6 +24,17 @@ function Login() {
             setOpenSnackbar2(true);
         }
     }
+
+    let formArray = new FormControlArray([
+        ['a', []],
+        ['b', []]
+    ])
+    const addControl = () => {
+        formArray.pushControl(['m',[Validators.Email]]);
+        formArray.controls[1].patchValue('z');
+        formArray.removeControlsAt(2);
+    }
+
     return (
         <div className="LoginContainer">
             <div className="LandingCardContainer fW300">
@@ -71,6 +83,7 @@ function Login() {
                     {strObjects.success_message}
                 </Alert>
             </Snackbar>
+            <Button onClick={addControl}>Push</Button>
         </div>
     )
 }

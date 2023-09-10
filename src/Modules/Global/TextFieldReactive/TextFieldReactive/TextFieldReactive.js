@@ -7,9 +7,12 @@ import './TextFieldReactive.css'
 function TextFieldReactive({ onChange, OnFocus, formControl, ...props }) {
     const defaultOnChange = onChange ? onChange : () => null
     const defaultOnFocus = OnFocus ? OnFocus : () => null
-    const updateTouched = () => { 
-        formControl?.patchTouched(true) 
+    const updateTouched = () => {
+        formControl?.patchTouched(true)
     };
+    const patchValue = (e) => {
+        formControl?.patchValue(e.target.value);
+    }
 
 
     // to mark the controls property as touched when submit btn is clicked
@@ -45,7 +48,7 @@ function TextFieldReactive({ onChange, OnFocus, formControl, ...props }) {
                 }
                 }
                 onChange={(e) => {
-                    formControl?.patchValue(e.target.value);
+                    patchValue(e);
                     if (defaultOnChange) {
                         defaultOnChange();
                     }
