@@ -1,10 +1,11 @@
-import { TextField } from "@mui/material"
-import { useEffect } from "react"
+import { IconButton, InputAdornment, TextField } from "@mui/material"
+import { useEffect, useState } from "react"
 import './TextFieldReactive.css'
+import { Visibility, VisibilityOff } from "@mui/icons-material"
 
 //Takes props to generate an MUI Textfield. fromControl prop takes a FormControl Object.
 //Takes onChange and OnFocus props to perform any custom operations
-function TextFieldReactive({ onChange, OnFocus, formControl, ...props }) {
+function TextFieldReactive({ onChange, OnFocus, formControl, type, ...props }) {
     const defaultOnChange = onChange ? onChange : () => null
     const defaultOnFocus = OnFocus ? OnFocus : () => null
     const updateTouched = () => {
@@ -13,6 +14,8 @@ function TextFieldReactive({ onChange, OnFocus, formControl, ...props }) {
     const patchValue = (e) => {
         formControl?.patchValue(e.target.value);
     }
+
+    const [isTypePassword, setIsTypePassword] = useState(type === 'password' ? true : false);
 
 
     // to mark the controls property as touched when submit btn is clicked
@@ -38,8 +41,8 @@ function TextFieldReactive({ onChange, OnFocus, formControl, ...props }) {
     }, []);
 
     return (
-        <div>
-            <TextField value={formControl?.value ? formControl.value : ''} {...props}
+        <div className={'reactiveInputContainer' + (props?.className ? ' ' + props.className : '') + (type === 'password' ? ' passwordInputContainer' : '')}>
+            <TextField value={formControl?.value ? formControl.value : ''} {...props} type={isTypePassword === true ? 'password' : 'text'}
                 onFocus={() => {
                     updateTouched();
                     if (defaultOnFocus) {
@@ -54,6 +57,12 @@ function TextFieldReactive({ onChange, OnFocus, formControl, ...props }) {
                     }
                 }
                 } />
+            {type === 'password' ? <InputAdornment position="end" style={{ position: 'absolute', margin: '5px 10px 5px 5px' }}>
+                <IconButton onClick={() => setIsTypePassword(!isTypePassword)}
+                    aria-label="toggle password visibility" edge="end">
+                    {isTypePassword === true ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+            </InputAdornment> : null}
         </div>
     )
 }

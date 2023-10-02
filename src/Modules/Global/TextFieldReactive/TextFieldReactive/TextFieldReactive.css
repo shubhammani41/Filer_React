@@ -1,0 +1,9 @@
+.reactiveInputContainer {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.reactiveInputContainer.passwordInputContainer input{
+    width: calc(100% - 50px);
+}

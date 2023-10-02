@@ -1,15 +1,18 @@
 import { Alert, Button, Card, CardActions, CardContent, CardHeader, InputLabel, Snackbar } from '@mui/material';
 import './Login.css';
 import { strObjects } from '../../../Constants/StringConstants';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Validators } from '../../Global/ReactiveForms/Validators';
 import { FormGroup } from '../../Global/ReactiveForms/FormGroup';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { TextFieldReactive } from '../../Global/TextFieldReactive/TextFieldReactive/TextFieldReactive';
 import { ErrorText } from '../../Global/TextFieldReactive/ErrorText/ErrorText';
 import { FormControlArray } from '../../Global/ReactiveForms/FormControlArray';
+import { AppContext } from '../../../AppContext';
 
 function Login() {
+    const [app_context_obj, setAppContext] = useContext(AppContext);
+    const navigate = useNavigate();
     let group = new FormGroup({
         userName: ['', [Validators.Required, Validators.Pattern(strObjects.username_regex)]],
         password: ['', [Validators.Required, Validators.Pattern(strObjects.password_regex)]]
@@ -22,6 +25,14 @@ function Login() {
         }
         else {
             setOpenSnackbar2(true);
+            setTimeout(() => {
+                setAppContext(prev => {
+                    let data = { ...prev };
+                    data.userData.isLoggedIn = true;
+                    return data;
+                })
+                navigate('/dashboard');
+            },1000)
         }
     }
 
@@ -30,9 +41,14 @@ function Login() {
         ['b', []]
     ])
     const addControl = () => {
-        formArray.pushControl(['m',[Validators.Email]]);
-        formArray.controls[1].patchValue('z');
+        formArray.pushControl(['m', [Validators.Email]]);
+        formArray.controls[1].patchValue('');
+        formArray.controls[1].patchValidators([Validators.Required]);
         formArray.removeControlsAt(2);
+        formArray.patchControls([
+            ['', [Validators.Required]],
+            ['j', []]
+        ])
     }
 
     return (
@@ -66,9 +82,6 @@ function Login() {
                             </div>
                         </div>
                     </CardActions>
-                    {/* <Button onClick={onClick}>
-                        Patch
-                    </Button> */}
                 </Card>
             </div>
             <Snackbar anchorOrigin={{ vertical: 'top', horizontal: 'right' }} open={openSnackBar1}
@@ -83,7 +96,7 @@ function Login() {
                     {strObjects.success_message}
                 </Alert>
             </Snackbar>
-            <Button onClick={addControl}>Push</Button>
+            {/* <Button onClick={addControl}>Push</Button> */}
         </div>
     )
 }
